@@ -3,11 +3,13 @@
     const inputValue = document.querySelector('.game__input');
     const form = document.querySelector('.game__form');
     const container = document.querySelector('.game__container');
+    const restart = document.querySelector('.game__restart-btn');
     let gridSize = 4;
     let count = 8;
     let arr = [];
     let firstOpenCard = null;
     let secondOpenCard = null;
+    let timer = null;
 
     function shuffle(array) {
       for (let i = array.length - 1; i > 0; i--) {
@@ -59,7 +61,7 @@
         secondOpenCard = this.dataset.num;
       }
       if (count <= 0 ) {
-        form.classList.remove('invisible')
+        restart.classList.remove('invisible')
       }
     }
 
@@ -77,8 +79,8 @@
       cards.forEach(card => card.addEventListener('click', checkPair));
     }
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
+    function startGame() {
+      clearTimeout(timer);
       container.innerHTML = '';
       arr=[];
       gridSize = inputValue.value;
@@ -86,8 +88,18 @@
       validateForm();
       getData();
       createGameField();
-      form.classList.add('invisible')
+      timer = setTimeout(()=> {
+        alert('Время истекло, попробуйте еще раз!');
+        startGame()
+      },30000)
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      startGame()
     });
+
+    restart.addEventListener('click', startGame)
 
     function createCard() {
       const newCard = document.createElement("div");

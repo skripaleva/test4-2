@@ -11,7 +11,7 @@ body {
 }
 
 .game__form input,
-.game__form button {
+button {
   font-family: Verdana, sans-serif;
   font-size: 16px;
 }
@@ -19,7 +19,7 @@ body {
 .game__container {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
 .game__card {
@@ -63,6 +63,11 @@ body {
 .card__front-face {
   background-color: #d4dc7e;
   transform: rotateY(180deg);
+}
+
+.game__restart-btn {
+  display: block;
+  margin: 0 auto;
 }
 
 .invisible {
