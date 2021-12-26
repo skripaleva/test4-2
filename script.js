@@ -91,7 +91,7 @@
       timer = setTimeout(()=> {
         alert('Время истекло, попробуйте еще раз!');
         startGame()
-      },30000)
+      },60000)
     }
 
     form.addEventListener('submit', (e) => {
